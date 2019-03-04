@@ -41,6 +41,8 @@ rate = rospy.Rate(30)
 
 # The function resets all PID variables for a clean start
 def resetPID():
+        global wr_actual, wr_target, e_wr, e_wr_prev, e_wr_sum, action_r
+        global wl_actual, wl_target, e_wl, e_wl_prev, e_wl_sum, action_l
         # Reset terms to start cleanly next time
         e_wr = 0
         e_wr_prev = 0
@@ -92,9 +94,8 @@ def PID():
 
         rate.sleep()
 
-    elif( goal_flag == 1):
+    elif( goal_flag == 1 ):
         resetPID()
-        time.sleep(0.5)
 
 
 def wr_act_callback(data):
@@ -134,4 +135,5 @@ if __name__ == '__main__':
         pass
     finally:
         resetPID()
+        time.sleep(1)
         rospy.loginfo("%s closed. All PID Vars are now reset" % rospy.get_name())
