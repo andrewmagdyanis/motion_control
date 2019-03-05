@@ -29,8 +29,8 @@ e_wl_prev = 0
 e_wl_sum = 0
 action_l = 0
 # PID Gains for left motor
-Kp_l = 0.4
-Ki_l = 0.1
+Kp_l = 0.45
+Ki_l = 0.08
 Kd_l = 0
 
 #Defining the node and publishers
@@ -87,7 +87,7 @@ def PID():
 
         # Saturating Integral Term to Prevent Integral Windup
         e_wr_sum = max(min(70, e_wr_sum), -70)
-        e_wr_sum = max(min(70, e_wr_sum), -70)
+        e_wl_sum = max(min(70, e_wl_sum), -70)
 
         r_pwr.publish(action_r)
         l_pwr.publish(action_l)
