@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="motion_control" type="encoders.py" name="encoders"/>
+  <node pkg="motion_control" type="motor_driver.py" name="motor_driver"/>
+  <node pkg="motion_control" type="vel_pid.py" name="vel_pid"/>
+</launch>
